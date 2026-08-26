@@ -3,17 +3,17 @@ public class Vehiculo {
     private String placa;
     private String marca;
     private String modelo;
-    private int anio;
+    private int año;
     private double precio;
     private String color;
     private String estado;
 
-    public Vehiculo(String placa, String marca, String modelo, int anio,
+    public Vehiculo(String placa, String marca, String modelo, int año,
                     double precio, String color, String estado) {
         this.placa = placa;
         this.marca = marca;
         this.modelo = modelo;
-        this.anio = anio;
+        this.año = año;
         this.precio = precio;
         this.color = color;
         this.estado = estado;
@@ -24,7 +24,7 @@ public class Vehiculo {
         System.out.println("Placa: " + placa);
         System.out.println("Marca: " + marca);
         System.out.println("Modelo: " + modelo);
-        System.out.println("Año: " + anio);
+        System.out.println("Año: " + añoo);
         System.out.println("Precio: $" + precio);
         System.out.println("Color: " + color);
         System.out.println("Estado: " + estado);
@@ -62,12 +62,12 @@ public class Vehiculo {
         this.modelo = modelo;
     }
 
-    public int getAnio() {
-        return anio;
+    public int getAño() {
+        return año;
     }
 
-    public void setAnio(int anio) {
-        this.anio = anio;
+    public void setAño(int año) {
+        this.año = año;
     }
 
     public double getPrecio() {
