@@ -7,8 +7,7 @@ public class Compra {
     private double precioCompra;
     private String metodoPago;
 
-    public Compra(String idCompra, Proveedor proveedor, Vehiculo vehiculo,
-                  String fecha, double precioCompra, String metodoPago) {
+    public Compra(String idCompra, Proveedor proveedor, Vehiculo vehiculo, String fecha, double precioCompra, String metodoPago) {
         this.idCompra = idCompra;
         this.proveedor = proveedor;
         this.vehiculo = vehiculo;
