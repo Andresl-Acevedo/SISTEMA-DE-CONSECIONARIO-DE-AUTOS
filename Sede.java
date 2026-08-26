@@ -1,4 +1,4 @@
-Clase sede
+Clase Sede
 public class Sede {
 
     private String idSede;
@@ -7,8 +7,7 @@ public class Sede {
     private String direccion;
     private String telefono;
 
-    public Sede(String idSede, String nombre, String ciudad,
-                String direccion, String telefono) {
+    public Sede(String idSede, String nombre, String ciudad, String direccion, String telefono) {
         this.idSede = idSede;
         this.nombre = nombre;
         this.ciudad = ciudad;
