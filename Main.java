@@ -1,126 +1,146 @@
-public class Main {
-
+package sistema_de_consecionario_de_autos;
+import javax.swing.JOptionPane;
+public class Sistema_de_Consecionario_de_Autos {
     public static void main(String[] args) {
 
-        // Crear vehiculo
+        String placa = JOptionPane.showInputDialog("Ingrese la placa:");
+        String marca = JOptionPane.showInputDialog("Ingrese la marca:");
+        String modelo = JOptionPane.showInputDialog("Ingrese el modelo:");
+
+        int año = Integer.parseInt(
+                JOptionPane.showInputDialog("Ingrese el año:")
+        );
+
+        double precio = Double.parseDouble(
+                JOptionPane.showInputDialog("Ingrese el precio:")
+        );
+
+        String color = JOptionPane.showInputDialog("Ingrese el color:");
+        String estado = JOptionPane.showInputDialog("Ingrese el estado:");
+
         Vehiculo vehiculo = new Vehiculo(
-                "ACV123",
-                "Toyota",
-                "Corolla",
-                2025,
-                95000000,
-                "Blanco",
-                "Disponible"
+                placa,
+                marca,
+                modelo,
+                año,
+                precio,
+                color,
+                estado
         );
 
-        // Crear cliente
+        // CLIENTE
+        
+        String idCliente = JOptionPane.showInputDialog(
+                "Ingrese el ID del cliente:"
+        );
+
+        String nombre = JOptionPane.showInputDialog(
+                "Ingrese el nombre del cliente:"
+        );
+
+        String cedula = JOptionPane.showInputDialog(
+                "Ingrese la cedula:"
+        );
+
+        String telefono = JOptionPane.showInputDialog(
+                "Ingrese el telefono:"
+        );
+
+        String correo = JOptionPane.showInputDialog(
+                "Ingrese el correo:"
+        );
+
         Cliente cliente = new Cliente(
-                "001",
-                "Carlos Perez",
-                "123456789",
-                "3001234567",
-                "carlos@gmail.com"
+                idCliente,
+                nombre,
+                cedula,
+                telefono,
+                correo
         );
 
-        // Crear proveedor
+
+        // PROVEEDOR
+        
+        String idProveedor = JOptionPane.showInputDialog(
+                "Ingrese el ID del proveedor:"
+        );
+
+        String nombreProveedor = JOptionPane.showInputDialog(
+                "Ingrese el nombre del proveedor:"
+        );
+
+        String empresa = JOptionPane.showInputDialog(
+                "Ingrese la empresa:"
+        );
+
+        String telefonoProveedor = JOptionPane.showInputDialog(
+                "Ingrese el telefono:"
+        );
+
+        String correoProveedor = JOptionPane.showInputDialog(
+                "Ingrese el correo:"
+        );
+
+        String ciudad = JOptionPane.showInputDialog(
+                "Ingrese la ciudad:"
+        );
+
         Proveedor proveedor = new Proveedor(
-                "P001",
-                "Andres Gomez",
-                "Toyota Colombia",
-                "3100000000",
-                "ventas@empresa.com",
-                "Bogota"
+                idProveedor,
+                nombreProveedor,
+                empresa,
+                telefonoProveedor,
+                correoProveedor,
+                ciudad
         );
 
-        // Crear mantenimiento
-        Mantenimiento mantenimiento = new Mantenimiento(
-                "M001",
-                "ACV123",
-                "24/08/2026",
-                "Cambio de aceite",
-                "Cambio de aceite y revision general",
-                350000
-        );
 
-        // Crear venta
-        Venta venta = new Venta(
-                "V001",
-                cliente,
-                vehiculo,
-                "24/08/2026",
-                95000000,
-                "Credito"
-        );
-
-        // Crear compra
-        Compra compra = new Compra(
-                "C001",
-                proveedor,
-                vehiculo,
-                "20/08/2026",
-                80000000,
-                "Transferencia"
-        );
-
-        // Crear sede
-        Sede sede = new Sede(
-                "S001",
-                "Sede Principal",
-                "Bogota",
-                "Calle 100 #20-30",
-                "6010000000"
-        );
-
-        // Crear transaccion
-        Transaccion transaccion = new Transaccion(
-                "T001",
-                "INGRESO",
-                95000000,
-                "24/08/2026",
-                "Venta vehiculo ACV123"
-        );
-
-        // Mostrar informacion
+        //INFO
+        
         vehiculo.mostrarInformacion();
-        System.out.println();
 
         cliente.mostrarInformacion();
-        System.out.println();
 
         proveedor.mostrarInformacion();
-        System.out.println();
 
-        mantenimiento.mostrarMantenimiento();
-        System.out.println();
 
-        venta.mostrarVenta();
-        System.out.println();
+        //PRUEBAS
 
-        compra.mostrarCompra();
-        System.out.println();
+        double descuento = Double.parseDouble(
+                JOptionPane.showInputDialog(
+                        "Ingrese el porcentaje de descuento:"
+                )
+        );
 
-        sede.mostrarInformacion();
-        System.out.println();
+        vehiculo.aplicarDescuento(descuento);
 
-        transaccion.mostrarTransaccion();
-        System.out.println();
+        JOptionPane.showMessageDialog(
+                null,
+                "Precio con descuento: $" + vehiculo.getPrecio()
+        );
 
-        // Probar algunos metodos
-        System.out.println("----- PRUEBAS -----");
 
-        vehiculo.aplicarDescuento(10);
-        System.out.println("Precio con 10% de descuento: $" + vehiculo.getPrecio());
+        String nuevoEstado = JOptionPane.showInputDialog(
+                "Ingrese el nuevo estado del vehiculo:"
+        );
 
-        vehiculo.cambiarEstado("Vendido");
-        System.out.println("Nuevo estado: " + vehiculo.getEstado());
+        vehiculo.cambiarEstado(nuevoEstado);
 
-        cliente.actualizarTelefono("3019999999");
-        System.out.println("Nuevo telefono del cliente: " + cliente.getTelefono());
+        JOptionPane.showMessageDialog(
+                null,
+                "Nuevo estado: " + vehiculo.getEstado()
+        );
 
-        venta.aplicarDescuento(5);
-        System.out.println("Total de venta con descuento: $" + venta.calcularTotal());
 
-        System.out.println("La transaccion es ingreso: " + transaccion.esIngreso());
-        System.out.println("La transaccion es egreso: " + transaccion.esEgreso());
+        String nuevoTelefono = JOptionPane.showInputDialog(
+                "Ingrese el nuevo telefono del cliente:"
+        );
+
+        cliente.actualizarTelefono(nuevoTelefono);
+
+        JOptionPane.showMessageDialog(
+                null,
+                "Nuevo telefono: " + cliente.getTelefono()
+        );
     }
 }
