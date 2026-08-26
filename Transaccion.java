@@ -7,8 +7,7 @@ public class Transaccion {
     private String fecha;
     private String descripcion;
 
-    public Transaccion(String idTransaccion, String tipo, double monto,
-                       String fecha, String descripcion) {
+    public Transaccion(String idTransaccion, String tipo, double monto, String fecha, String descripcion) {
         this.idTransaccion = idTransaccion;
         this.tipo = tipo;
         this.monto = monto;
