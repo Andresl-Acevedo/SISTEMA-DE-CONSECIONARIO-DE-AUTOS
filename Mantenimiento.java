@@ -7,9 +7,7 @@ public class Mantenimiento {
     private String descripcion;
     private double costo;
 
-    public Mantenimiento(String idMantenimiento, String placaVehiculo,
-                          String fecha, String tipo, String descripcion,
-                          double costo) {
+    public Mantenimiento(String idMantenimiento, String placaVehiculo, String fecha, String tipo, String descripcion, double costo) {
         this.idMantenimiento = idMantenimiento;
         this.placaVehiculo = placaVehiculo;
         this.fecha = fecha;
