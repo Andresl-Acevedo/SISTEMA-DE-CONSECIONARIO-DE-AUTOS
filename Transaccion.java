@@ -1,4 +1,4 @@
-Clase ftransaccion
+Clase Transaccion
 public class Transaccion {
 
     private String idTransaccion;
