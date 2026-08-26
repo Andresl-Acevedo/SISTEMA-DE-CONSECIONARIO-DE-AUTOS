@@ -7,8 +7,7 @@ public class Venta {
     private double precioVenta;
     private String metodoPago;
 
-    public Venta(String idVenta, Cliente cliente, Vehiculo vehiculo,
-                 String fecha, double precioVenta, String metodoPago) {
+    public Venta(String idVenta, Cliente cliente, Vehiculo vehiculo, String fecha, double precioVenta, String metodoPago) {
         this.idVenta = idVenta;
         this.cliente = cliente;
         this.vehiculo = vehiculo;
