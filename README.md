@@ -6,7 +6,7 @@ La idea principal fue crear diferentes clases para guardar y manejar la informac
 
 El proyecto se realizó principalmente para practicar los conceptos de **Programación Orientada a Objetos** y entender mejor cómo se pueden relacionar diferentes clases entre sí.
 
-## Clasews
+## Clases
 
 El proyecto cuenta con las siguientes clases:
 
@@ -34,7 +34,7 @@ Durante el desarrollo se utilizaron varios conceptos básicos de Programación O
 
 Por ejemplo, una `Venta` tiene un `Cliente` y un `Vehiculo`, por lo que las clases no funcionan solamente de manera independiente, sino que también se pueden relacionar entre ellas.
 
-## Accones
+## Acciones
 
 El programa permite probar diferentes acciones, como:
 
