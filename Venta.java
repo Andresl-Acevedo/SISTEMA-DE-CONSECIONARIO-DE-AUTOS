@@ -1,19 +1,31 @@
+package sistema_de_consecionario_de_autos;
+
+
 public class Venta {
 
-    private String idVenta;
     private Cliente cliente;
     private Vehiculo vehiculo;
     private String fecha;
     private double precioVenta;
     private String metodoPago;
 
-    public Venta(String idVenta, Cliente cliente, Vehiculo vehiculo, String fecha, double precioVenta, String metodoPago) {
-        this.idVenta = idVenta;
+    public Venta(Cliente cliente, Vehiculo vehiculo,
+                 String fecha, double precioVenta, String metodoPago) {
+
+        if (!vehiculo.getEstado().equalsIgnoreCase("Disponible")) {
+            throw new VehiculoNoDisponibleException(
+                "El vehiculo no esta disponible para la venta."
+            );
+        }
+
         this.cliente = cliente;
         this.vehiculo = vehiculo;
         this.fecha = fecha;
         this.precioVenta = precioVenta;
         this.metodoPago = metodoPago;
+
+        // Al venderlo, cambia su estado
+        vehiculo.cambiarEstado("Vendido");
     }
 
     public double calcularTotal() {
@@ -21,8 +33,8 @@ public class Venta {
     }
 
     public void mostrarVenta() {
+
         System.out.println("----- VENTA -----");
-        System.out.println("ID Venta: " + idVenta);
         System.out.println("Cliente: " + cliente.getNombre());
         System.out.println("Vehiculo: " + vehiculo.getPlaca());
         System.out.println("Fecha: " + fecha);
@@ -31,16 +43,16 @@ public class Venta {
     }
 
     public void aplicarDescuento(double porcentaje) {
-        this.precioVenta = this.precioVenta -
-                (this.precioVenta * porcentaje / 100);
-    }
 
-    public String getIdVenta() {
-        return idVenta;
-    }
+        if (porcentaje < 0 || porcentaje > 100) {
+            throw new PrecioInvalidoException(
+                "El descuento debe estar entre 0 y 100."
+            );
+        }
 
-    public void setIdVenta(String idVenta) {
-        this.idVenta = idVenta;
+        this.precioVenta =
+            this.precioVenta -
+            (this.precioVenta * porcentaje / 100);
     }
 
     public Cliente getCliente() {
