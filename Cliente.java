@@ -8,8 +8,7 @@ public class Cliente {
     private String telefono;
     private String correo;
 
-    public Cliente(String nombre, String documento,
-                   String telefono, String correo) {
+    public Cliente(String nombre, String documento, String telefono, String correo) {
 
         this.nombre = nombre;
         this.documento = documento;
