@@ -1,4 +1,6 @@
-Clase Sede
+package sistema_de_consecionario_de_autos;
+
+
 public class Sede {
 
     private String idSede;
@@ -8,6 +10,7 @@ public class Sede {
     private String telefono;
 
     public Sede(String idSede, String nombre, String ciudad, String direccion, String telefono) {
+
         this.idSede = idSede;
         this.nombre = nombre;
         this.ciudad = ciudad;
@@ -16,6 +19,7 @@ public class Sede {
     }
 
     public void mostrarInformacion() {
+
         System.out.println("----- SEDE -----");
         System.out.println("ID: " + idSede);
         System.out.println("Nombre: " + nombre);
