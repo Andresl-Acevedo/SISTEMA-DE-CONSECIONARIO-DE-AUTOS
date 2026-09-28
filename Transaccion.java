@@ -1,4 +1,6 @@
-Clase Transaccion
+package sistema_de_consecionario_de_autos;
+
+
 public class Transaccion {
 
     private String idTransaccion;
@@ -8,6 +10,7 @@ public class Transaccion {
     private String descripcion;
 
     public Transaccion(String idTransaccion, String tipo, double monto, String fecha, String descripcion) {
+
         this.idTransaccion = idTransaccion;
         this.tipo = tipo;
         this.monto = monto;
@@ -16,6 +19,7 @@ public class Transaccion {
     }
 
     public void mostrarTransaccion() {
+
         System.out.println("----- TRANSACCION -----");
         System.out.println("ID: " + idTransaccion);
         System.out.println("Tipo: " + tipo);
