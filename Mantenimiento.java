@@ -1,3 +1,6 @@
+package sistema_de_consecionario_de_autos;
+
+
 public class Mantenimiento {
 
     private String idMantenimiento;
@@ -8,6 +11,7 @@ public class Mantenimiento {
     private double costo;
 
     public Mantenimiento(String idMantenimiento, String placaVehiculo, String fecha, String tipo, String descripcion, double costo) {
+
         this.idMantenimiento = idMantenimiento;
         this.placaVehiculo = placaVehiculo;
         this.fecha = fecha;
@@ -21,6 +25,7 @@ public class Mantenimiento {
     }
 
     public void mostrarMantenimiento() {
+
         System.out.println("----- MANTENIMIENTO -----");
         System.out.println("ID: " + idMantenimiento);
         System.out.println("Vehiculo: " + placaVehiculo);
