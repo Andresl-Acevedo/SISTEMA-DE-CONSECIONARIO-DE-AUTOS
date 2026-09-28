@@ -1,13 +1,16 @@
+package sistema_de_consecionario_de_autos;
+
+
 public class Cliente {
 
-    private String idCliente;
     private String nombre;
     private String documento;
     private String telefono;
     private String correo;
 
-    public Cliente(String idCliente, String nombre, String documento, String telefono, String correo) {
-        this.idCliente = idCliente;
+    public Cliente(String nombre, String documento,
+                   String telefono, String correo) {
+
         this.nombre = nombre;
         this.documento = documento;
         this.telefono = telefono;
@@ -15,8 +18,8 @@ public class Cliente {
     }
 
     public void mostrarInformacion() {
+
         System.out.println("----- CLIENTE -----");
-        System.out.println("ID: " + idCliente);
         System.out.println("Nombre: " + nombre);
         System.out.println("Documento: " + documento);
         System.out.println("Telefono: " + telefono);
@@ -28,15 +31,9 @@ public class Cliente {
     }
 
     public void registrarCompra() {
-        System.out.println("Compra registrada para el cliente: " + nombre);
-    }
-
-    public String getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(String idCliente) {
-        this.idCliente = idCliente;
+        System.out.println(
+            "Compra registrada para el cliente: " + nombre
+        );
     }
 
     public String getNombre() {
