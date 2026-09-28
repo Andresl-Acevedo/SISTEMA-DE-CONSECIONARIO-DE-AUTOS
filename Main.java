@@ -1,146 +1,210 @@
 package sistema_de_consecionario_de_autos;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 public class Sistema_de_Consecionario_de_Autos {
+
     public static void main(String[] args) {
 
-        String placa = JOptionPane.showInputDialog("Ingrese la placa:");
-        String marca = JOptionPane.showInputDialog("Ingrese la marca:");
-        String modelo = JOptionPane.showInputDialog("Ingrese el modelo:");
+        try {
 
-        int año = Integer.parseInt(
-                JOptionPane.showInputDialog("Ingrese el año:")
-        );
+            // LISTA DE INFORMACION
 
-        double precio = Double.parseDouble(
-                JOptionPane.showInputDialog("Ingrese el precio:")
-        );
+            ArrayList<Vehiculo> vehiculos = new ArrayList<>();
+            ArrayList<Cliente> clientes = new ArrayList<>();
+            ArrayList<Proveedor> proveedores = new ArrayList<>();
+            ArrayList<Venta> ventas = new ArrayList<>();
+            ArrayList<Compra> compras = new ArrayList<>();
 
-        String color = JOptionPane.showInputDialog("Ingrese el color:");
-        String estado = JOptionPane.showInputDialog("Ingrese el estado:");
+            // CREAR CARRO
 
-        Vehiculo vehiculo = new Vehiculo(
-                placa,
-                marca,
-                modelo,
-                año,
-                precio,
-                color,
-                estado
-        );
+            String placa = JOptionPane.showInputDialog("Ingrese la placa:");
+            String marca = JOptionPane.showInputDialog("Ingrese la marca:");
+            String modelo = JOptionPane.showInputDialog("Ingrese el modelo:");       
+            double precio = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el precio:"));      
+            String color = JOptionPane.showInputDialog("Ingrese el color:");
+            String estado = JOptionPane.showInputDialog("Ingrese el estado (Disponible/Vendido):");
+            int numeroPuertas = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero de puertas:"));
 
-        // CLIENTE
-        
-        String idCliente = JOptionPane.showInputDialog(
-                "Ingrese el ID del cliente:"
-        );
+            // POLIMORFISMO
 
-        String nombre = JOptionPane.showInputDialog(
-                "Ingrese el nombre del cliente:"
-        );
+            Vehiculo vehiculo = new Sedan(
+                    placa,
+                    marca,
+                    modelo,
+                    precio,
+                    color,
+                    estado,
+                    numeroPuertas
+            );
+            
+            Vehiculo vehiculo2 = new SUV(
+                    "XYZ789",
+                    "Toyota",
+                    "2025",
+                    120000000,
+                    "Negro",
+                    "Disponible",
+                    true
+            );
 
-        String cedula = JOptionPane.showInputDialog(
-                "Ingrese la cedula:"
-        );
+            // Guardamos LAS VARIABLES
+            vehiculos.add(vehiculo);
+            vehiculos.add(vehiculo2);
 
-        String telefono = JOptionPane.showInputDialog(
-                "Ingrese el telefono:"
-        );
+            // CLIENTE
 
-        String correo = JOptionPane.showInputDialog(
-                "Ingrese el correo:"
-        );
+            String nombre = JOptionPane.showInputDialog("Ingrese el nombre del cliente:");
+            String cedula = JOptionPane.showInputDialog("Ingrese la cedula:");
+            String telefono = JOptionPane.showInputDialog("Ingrese el telefono:");
+            String correo = JOptionPane.showInputDialog("Ingrese el correo:");
 
-        Cliente cliente = new Cliente(
-                idCliente,
-                nombre,
-                cedula,
-                telefono,
-                correo
-        );
+            Cliente cliente = new Cliente(
+                    nombre,
+                    cedula,
+                    telefono,
+                    correo
+            );
 
+            clientes.add(cliente);
 
-        // PROVEEDOR
-        
-        String idProveedor = JOptionPane.showInputDialog(
-                "Ingrese el ID del proveedor:"
-        );
+            // PROVEEDOR
 
-        String nombreProveedor = JOptionPane.showInputDialog(
-                "Ingrese el nombre del proveedor:"
-        );
+            String nombreProveedor = JOptionPane.showInputDialog("Ingrese el nombre del proveedor:");
+            String telefonoProveedor = JOptionPane.showInputDialog("Ingrese el telefono del proveedor:");
 
-        String empresa = JOptionPane.showInputDialog(
-                "Ingrese la empresa:"
-        );
+            Proveedor proveedor = new Proveedor(
+                    nombreProveedor,
+                    telefonoProveedor
+            );
 
-        String telefonoProveedor = JOptionPane.showInputDialog(
-                "Ingrese el telefono:"
-        );
+            proveedores.add(proveedor);
 
-        String correoProveedor = JOptionPane.showInputDialog(
-                "Ingrese el correo:"
-        );
+            // MOSTRAR INFORMACION
 
-        String ciudad = JOptionPane.showInputDialog(
-                "Ingrese la ciudad:"
-        );
+            System.out.println();
+            System.out.println("=================================");
+            System.out.println("      INFORMACION REGISTRADA");
+            System.out.println("=================================");
 
-        Proveedor proveedor = new Proveedor(
-                idProveedor,
-                nombreProveedor,
-                empresa,
-                telefonoProveedor,
-                correoProveedor,
-                ciudad
-        );
+            vehiculo.mostrarInformacion();
+            System.out.println();
+            cliente.mostrarInformacion();
+            System.out.println();
+            proveedor.mostrarInformacion();
 
+            // DESCUENTO
 
-        //INFO
-        
-        vehiculo.mostrarInformacion();
+            double descuento = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el porcentaje de descuento:"));
 
-        cliente.mostrarInformacion();
+            vehiculo.aplicarDescuento(descuento);
 
-        proveedor.mostrarInformacion();
+            JOptionPane.showMessageDialog(null, "Precio con descuento: $" + vehiculo.getPrecio());
+            
+            // CAMBIAR ESTADO
 
+            String nuevoEstado = JOptionPane.showInputDialog("Ingrese el nuevo estado del vehiculo:");
 
-        //PRUEBAS
+            vehiculo.cambiarEstado(nuevoEstado);
 
-        double descuento = Double.parseDouble(
-                JOptionPane.showInputDialog(
-                        "Ingrese el porcentaje de descuento:"
-                )
-        );
+            JOptionPane.showMessageDialog(null, "Nuevo estado: " + vehiculo.getEstado());
+            
+            // ACTUALIZAR TELEFONO
 
-        vehiculo.aplicarDescuento(descuento);
+            String nuevoTelefono = JOptionPane.showInputDialog("Ingrese el nuevo telefono del cliente:");
 
-        JOptionPane.showMessageDialog(
-                null,
-                "Precio con descuento: $" + vehiculo.getPrecio()
-        );
+            cliente.actualizarTelefono(nuevoTelefono);
 
+            JOptionPane.showMessageDialog(null,"Nuevo telefono: " + cliente.getTelefono());
+            
+            // MOSTRAR INFORMACION DIARIA
 
-        String nuevoEstado = JOptionPane.showInputDialog(
-                "Ingrese el nuevo estado del vehiculo:"
-        );
+            System.out.println();
+            System.out.println("=================================");
+            System.out.println("       INFORMACION DIARIA");
+            System.out.println("=================================");
 
-        vehiculo.cambiarEstado(nuevoEstado);
+            System.out.println("Cantidad de vehiculos: " + vehiculos.size());
+            System.out.println("Cantidad de clientes: " + clientes.size());
+            System.out.println("Cantidad de proveedores: " + proveedores.size());
 
-        JOptionPane.showMessageDialog(
-                null,
-                "Nuevo estado: " + vehiculo.getEstado()
-        );
+            // RECORRER LISTA
+            
+            System.out.println();
+            System.out.println("----- VEHICULOS REGISTRADOS -----");
 
+            for (Vehiculo v : vehiculos) {
+                System.out.println("Placa: " + v.getPlaca());
+                System.out.println("Tipo: " + v.getTipoVehiculo());
+                System.out.println("Marca: " + v.getMarca());
+                System.out.println();
+            }
 
-        String nuevoTelefono = JOptionPane.showInputDialog(
-                "Ingrese el nuevo telefono del cliente:"
-        );
+            // INTENTAR REALIZAR UNA VENTA
 
-        cliente.actualizarTelefono(nuevoTelefono);
+            int realizarVenta = JOptionPane.showConfirmDialog(null, "Desea registrar una venta?", "Venta", JOptionPane.YES_NO_OPTION);
 
-        JOptionPane.showMessageDialog(
-                null,
-                "Nuevo telefono: " + cliente.getTelefono()
-        );
+            if (realizarVenta == JOptionPane.YES_OPTION) {
+                
+                String fecha = JOptionPane.showInputDialog("Ingrese la fecha:");
+
+                double precioVenta = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el precio de venta:"));
+
+                String metodoPago = JOptionPane.showInputDialog("Ingrese el metodo de pago:");
+
+                try {
+
+                    Venta venta = new Venta(
+                            cliente,
+                            vehiculo,
+                            fecha,
+                            precioVenta,
+                            metodoPago
+                    );
+
+                    ventas.add(venta);
+
+                    venta.mostrarVenta();
+
+                    JOptionPane.showMessageDialog(null, "Venta registrada correctamente.");
+
+                } catch (VehiculoNoDisponibleException e) {
+
+                    JOptionPane.showMessageDialog(null, "ERROR: " + e.getMessage());
+                }
+            }
+
+            // RESULTADO FINAL
+
+            System.out.println();
+            System.out.println("=================================");
+            System.out.println("       RESUMEN DEL SISTEMA");
+            System.out.println("=================================");
+
+            System.out.println("Vehiculos: " + vehiculos.size());
+
+            System.out.println( "Clientes: " + clientes.size());
+
+            System.out.println("Proveedores: " + proveedores.size());
+
+            System.out.println("Ventas: " + ventas.size());
+
+            System.out.println("Compras: " + compras.size());
+
+        } catch (NumberFormatException e) {
+
+            JOptionPane.showMessageDialog(null, "ERROR: Debe ingresar un numero valido.");
+
+        } catch (PrecioInvalidoException e) {
+
+            JOptionPane.showMessageDialog(null, "ERROR: " + e.getMessage());
+
+        } catch (IllegalArgumentException e) {
+
+            JOptionPane.showMessageDialog(null, "ERROR: " + e.getMessage());
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(null, "Ocurrio un error: " + e.getMessage());
+        }
     }
 }
