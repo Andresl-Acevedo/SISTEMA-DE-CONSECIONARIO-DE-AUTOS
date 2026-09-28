@@ -1,3 +1,6 @@
+package sistema_de_consecionario_de_autos;
+
+
 public class Compra {
 
     private String idCompra;
@@ -7,7 +10,9 @@ public class Compra {
     private double precioCompra;
     private String metodoPago;
 
-    public Compra(String idCompra, Proveedor proveedor, Vehiculo vehiculo, String fecha, double precioCompra, String metodoPago) {
+    public Compra(String idCompra, Proveedor proveedor, Vehiculo vehiculo,
+                  String fecha, double precioCompra, String metodoPago) {
+
         this.idCompra = idCompra;
         this.proveedor = proveedor;
         this.vehiculo = vehiculo;
@@ -21,9 +26,9 @@ public class Compra {
     }
 
     public void mostrarCompra() {
+
         System.out.println("----- COMPRA -----");
         System.out.println("ID Compra: " + idCompra);
-        System.out.println("Proveedor: " + proveedor.getEmpresa());
         System.out.println("Vehiculo: " + vehiculo.getPlaca());
         System.out.println("Fecha: " + fecha);
         System.out.println("Precio: $" + precioCompra);
